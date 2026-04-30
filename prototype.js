@@ -66,6 +66,34 @@
       image: 'src/imports/1440WLight/453815ae6aaca94cfa7ba9935a5657c4abddffea.png'
     },
     {
+      id: 'altai-trail',
+      title: 'Altai Trail Weekend',
+      sport: 'run',
+      sportName: 'Бег',
+      region: 'Алтайский край',
+      date: '2026-07-12T10:00:00',
+      place: 'Манжерок',
+      participants: '1600+',
+      seats: 74,
+      status: 'upcoming',
+      price: 2800,
+      image: 'src/imports/1440WLight/12c1e2c7563da31303ab1c49523794c71ae6664c.png'
+    },
+    {
+      id: 'baltic-bike',
+      title: 'Балтийский велозаезд',
+      sport: 'bike',
+      sportName: 'Велоспорт',
+      region: 'Калининградская область',
+      date: '2026-08-02T09:30:00',
+      place: 'Куршская коса',
+      participants: '2200+',
+      seats: 58,
+      status: 'upcoming',
+      price: 3600,
+      image: 'src/imports/1440WLight/6dd98ca0acaa339e158726df226104416d0648b6.png'
+    },
+    {
       id: 'karelia-ski',
       title: 'Karelia Ski Sprint',
       sport: 'ski',
@@ -367,6 +395,8 @@ $(function () {
     { id: 'e2', title: 'Vologda Ski Classic', sport: 'ski', sportName: 'Лыжи', region: 'Вологодская область', place: 'Кирики-Улита', date: '2026-05-24T10:30:00', month: 'Май 2026', status: 'upcoming', seats: 8, price: 2100, paid: false },
     { id: 'e3', title: 'Northern Bike Gran Fondo', sport: 'bike', sportName: 'Велоспорт', region: 'Санкт-Петербург', place: 'Приморский маршрут', date: '2026-06-07T08:00:00', month: 'Июнь 2026', status: 'upcoming', seats: 126, price: 3900, paid: true },
     { id: 'e4', title: 'Kazan Night Half Marathon', sport: 'run', sportName: 'Бег', region: 'Татарстан', place: 'Кремлевская набережная', date: '2026-06-20T21:00:00', month: 'Июнь 2026', status: 'upcoming', seats: 310, price: 3200, paid: false },
+    { id: 'e7', title: 'Altai Trail Weekend', sport: 'run', sportName: 'Бег', region: 'Алтайский край', place: 'Манжерок', date: '2026-07-12T10:00:00', month: 'Июль 2026', status: 'upcoming', seats: 74, price: 2800, paid: false },
+    { id: 'e8', title: 'Балтийский велозаезд', sport: 'bike', sportName: 'Велоспорт', region: 'Калининградская область', place: 'Куршская коса', date: '2026-08-02T09:30:00', month: 'Август 2026', status: 'upcoming', seats: 58, price: 3600, paid: false },
     { id: 'e5', title: 'Karelia Ski Sprint', sport: 'ski', sportName: 'Лыжи', region: 'Карелия', place: 'Петрозаводск', date: '2026-02-15T11:00:00', month: 'Февраль 2026', status: 'past', seats: 0, price: 1800, paid: true, result: '00:54:18' },
     { id: 'e6', title: 'Siberian Frost Run', sport: 'run', sportName: 'Бег', region: 'Новосибирская область', place: 'Михайловская набережная', date: '2026-03-01T10:00:00', month: 'Март 2026', status: 'past', seats: 0, price: 2400, paid: true, result: '01:48:34' }
   ];
