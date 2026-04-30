@@ -1,0 +1,214 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Личный кабинет ARTA Sport</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="prototype.css">
+</head>
+<body class="lk-page">
+  <header class="mobile-header">
+    <a class="brand" href="Index.html" aria-label="ARTA Sport">
+      <img class="logo-img" src="src/logo_1.png" alt="Arta Sport">
+    </a>
+    <button class="menu-btn" type="button" aria-label="Открыть меню">☰</button>
+  </header>
+
+  <div class="account-shell">
+    <aside class="sidebar" aria-label="Разделы личного кабинета">
+      <a class="side-logo" href="Index.html">
+        <img class="logo-img" src="src/logo_1.png" alt="Arta Sport">
+        <span>кабинет атлета</span>
+      </a>
+
+      <nav class="side-nav">
+        <button class="side-link is-active" type="button" data-view="profile"><span class="nav-ico">P</span><span>Профиль</span></button>
+        <button class="side-link" type="button" data-view="documents"><span class="nav-ico">DOC</span><span>Документы</span></button>
+        <button class="side-link" type="button" data-view="registrations"><span class="nav-ico">REG</span><span>Регистрации</span></button>
+        <button class="side-link" type="button" data-view="orders"><span class="nav-ico">PAY</span><span>Заказы</span></button>
+        <button class="side-link" type="button" data-view="ratings"><span class="nav-ico">TOP</span><span>Оценки</span></button>
+        <button class="side-link" type="button" data-view="championships"><span class="nav-ico">CUP</span><span>Мои чемпионаты</span></button>
+        <button class="side-link" type="button" data-view="teams"><span class="nav-ico">TM</span><span>Команды</span></button>
+        <button class="side-link" type="button" data-view="clubs"><span class="nav-ico">CLB</span><span>Мои клубы</span></button>
+        <button class="side-link" type="button" data-view="training"><span class="nav-ico">TRN</span><span>Тренировки</span></button>
+        <button class="side-link" type="button" data-view="family"><span class="nav-ico">FAM</span><span>Семья</span></button>
+      </nav>
+
+      <div class="side-footer">
+        <button class="side-link" type="button" data-view="edit"><span class="nav-ico">ED</span><span>Изменить профиль</span></button>
+        <button class="side-link" type="button" data-view="password"><span class="nav-ico">KEY</span><span>Смена пароля</span></button>
+        <a class="side-link muted" href="Index.html"><span class="nav-ico">←</span><span>На сайт</span></a>
+      </div>
+    </aside>
+
+    <main class="account-card">
+      <a class="back-home" href="Index.html">← На главную страницу</a>
+
+      <section class="view is-visible" data-view-panel="profile">
+        <div class="page-kicker">Личный кабинет</div>
+        <h1>Мой профиль</h1>
+
+        <article class="profile-summary">
+          <div class="avatar">ВД</div>
+          <div class="profile-text">
+            <h2>Васильев Дмитрий</h2>
+            <p>Мужчина · 49 лет · fendervik@gmail.com</p>
+          </div>
+          <button class="ghost-btn" type="button" data-view-target="edit">Редактировать</button>
+        </article>
+
+        <section class="metrics-grid">
+          <article><strong>3</strong><span>будущих старта</span></article>
+          <article><strong>18</strong><span>баллов участия</span></article>
+          <article><strong>2</strong><span>детских профиля</span></article>
+        </section>
+
+        <section class="insurance-block">
+          <div class="block-title">
+            <div>
+              <p class="eyebrow">Партнерские сервисы</p>
+              <h2>Страхование</h2>
+            </div>
+            <span class="partner-logo">✺ ЛУЧИ</span>
+          </div>
+          <div class="insurance-grid">
+            <button class="choice-card" type="button" data-insurance="От несчастных случаев">От несчастных случаев</button>
+            <button class="choice-card" type="button" data-insurance="Велостраховка">Велостраховка</button>
+            <button class="choice-card" type="button" data-insurance="Страхование лыж">Страхование лыж</button>
+          </div>
+        </section>
+
+        <section class="deduction-banner">
+          <div>
+            <p class="eyebrow">Возврат средств</p>
+            <h3>Налоговый вычет за спорт</h3>
+            <p>Верните часть стоимости слота на событиях определенных организаторов.</p>
+            <button class="primary-btn" type="button">Оформить вычет</button>
+          </div>
+          <div class="banner-visual" aria-hidden="true">%</div>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="mini-panel">
+            <div class="panel-head">
+              <h3>Мои будущие старты</h3>
+              <button class="text-btn" type="button" data-view-target="registrations">Все</button>
+            </div>
+            <div id="futureStarts"></div>
+          </article>
+          <article class="mini-panel">
+            <div class="panel-head">
+              <h3>История участий</h3>
+              <button class="text-btn" type="button" data-view-target="ratings">Результаты</button>
+            </div>
+            <div id="pastStarts"></div>
+          </article>
+        </section>
+      </section>
+
+      <section class="view" data-view-panel="documents">
+        <div class="section-head">
+          <div><p class="eyebrow">Автоприкрепление к заявкам</p><h1>Документы</h1></div>
+        </div>
+        <div class="document-grid">
+          <article class="document-card">
+            <span class="doc-icon">PDF</span>
+            <div><h3>Спортивная страховка</h3><p id="insuranceFile">insurance_vasilev_2026.pdf · действует до 20.12.2026</p></div>
+            <label class="upload-btn">Загрузить<input type="file" id="insuranceUpload" accept=".pdf,.jpg,.jpeg,.png"></label>
+          </article>
+          <article class="document-card">
+            <span class="doc-icon">MED</span>
+            <div><h3>Медицинская справка</h3><p>Не загружена. Понадобится для дистанций от 21 км.</p></div>
+            <button class="ghost-btn" type="button">Добавить</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="view" data-view-panel="registrations">
+        <div class="section-head">
+          <div><p class="eyebrow">Календарь и заявки</p><h1>Регистрации</h1></div>
+          <button class="primary-btn" type="button" data-open-drawer="registration">Новая регистрация</button>
+        </div>
+        <form class="filters" id="eventFilters">
+          <label>Вид спорта<select id="sportFilter"><option value="all">Все</option><option value="run">Бег</option><option value="ski">Лыжи</option><option value="bike">Велоспорт</option></select></label>
+          <label>Регион<select id="regionFilter"><option value="all">Все регионы</option></select></label>
+          <label>Статус<select id="statusFilter"><option value="upcoming">Предстоящие</option><option value="past">Прошедшие</option><option value="all">Все</option></select></label>
+        </form>
+        <div class="calendar-list" id="calendarList"></div>
+      </section>
+
+      <section class="view" data-view-panel="orders">
+        <div class="section-head"><div><p class="eyebrow">Оплаченные слоты</p><h1>Заказы</h1></div></div>
+        <div class="order-list" id="ordersList"></div>
+      </section>
+
+      <section class="view" data-view-panel="ratings">
+        <div class="section-head"><div><p class="eyebrow">Результаты и баллы</p><h1>Оценки</h1></div></div>
+        <div class="rating-card"><strong>18</strong><span>баллов лидера по числу участий</span><p>Начисляется 1 балл за каждый оплаченный старт.</p></div>
+        <div class="result-list" id="resultList"></div>
+      </section>
+
+      <section class="view" data-view-panel="championships"><h1>Мои чемпионаты</h1><div class="empty-state">Вы пока не состоите в чемпионатах. После регистрации серия появится здесь.</div></section>
+      <section class="view" data-view-panel="teams"><h1>Команды</h1><div class="empty-state">Создавайте команды для эстафет и корпоративных стартов.</div></section>
+      <section class="view" data-view-panel="clubs"><h1>Мои клубы</h1><div class="empty-state">Добавьте спортивный клуб, чтобы получать клубные скидки.</div></section>
+
+      <section class="view" data-view-panel="training">
+        <h1>Тренировки</h1>
+        <div class="training-grid">
+          <article class="mini-panel"><h3>Беговая подготовка</h3><p>Вторник и четверг · 19:30</p><button class="ghost-btn" type="button">Записаться</button></article>
+          <article class="mini-panel"><h3>Велогруппа</h3><p>Суббота · 08:00</p><button class="ghost-btn" type="button">Записаться</button></article>
+        </div>
+      </section>
+
+      <section class="view" data-view-panel="family">
+        <div class="section-head">
+          <div><p class="eyebrow">Быстрая регистрация родителем</p><h1>Семья</h1></div>
+          <button class="primary-btn" type="button" data-open-drawer="dependent">Добавить ребенка</button>
+        </div>
+        <div class="family-list" id="dependentList"></div>
+      </section>
+
+      <section class="view" data-view-panel="edit">
+        <h1>Изменить профиль</h1>
+        <form class="profile-form" id="profileForm">
+          <label>Имя<input type="text" value="Дмитрий"></label>
+          <label>Фамилия<input type="text" value="Васильев"></label>
+          <label>Email<input type="email" value="fendervik@gmail.com"></label>
+          <button class="primary-btn" type="submit">Сохранить</button>
+        </form>
+      </section>
+
+      <section class="view" data-view-panel="password">
+        <h1>Смена пароля</h1>
+        <form class="profile-form">
+          <label>Текущий пароль<input type="password"></label>
+          <label>Новый пароль<input type="password"></label>
+          <button class="primary-btn" type="button">Обновить пароль</button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-backdrop" data-close-drawer></div>
+    <aside class="drawer-panel">
+      <button class="drawer-close" type="button" data-close-drawer aria-label="Закрыть">×</button>
+      <h2 id="drawerTitle"></h2>
+      <div id="drawerBody"></div>
+    </aside>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    window.jQuery || document.write('<script src="prototype-jquery-fallback.js"><\/script>');
+  </script>
+  <script src="prototype.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ARTA Sport — спортивные события</title>
+  <link rel="stylesheet" href="prototype.css">
+</head>
+<body class="home-page">
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="ARTA Sport">
+      <img class="logo-img" src="src/logo_1.png" alt="Arta Sport">
+    </a>
+    <nav class="desktop-nav" aria-label="Основная навигация">
+      <a href="#events">События</a>
+      <a href="#sports">Виды спорта</a>
+      <a href="#news">Новости</a>
+    </nav>
+    <div class="account-menu">
+      <button class="account-icon" type="button" aria-label="Личный кабинет" aria-expanded="false">
+        <span></span>
+      </button>
+      <div class="account-dropdown" aria-label="Меню личного кабинета">
+        <a class="account-primary" href="lk.html">Открыть личный кабинет</a>
+        <a href="lk.html#profile">Профиль</a>
+        <a href="lk.html#documents">Документы</a>
+        <a href="lk.html#registrations">Регистрации</a>
+      </div>
+    </div>
+    <button class="menu-toggle" type="button" aria-label="Открыть меню">☰</button>
+  </header>
+
+  <nav class="mobile-menu" aria-label="Мобильная навигация">
+    <a href="#events">События</a>
+    <a href="#sports">Виды спорта</a>
+    <a href="#news">Новости</a>
+    <a href="lk.html">Личный кабинет</a>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-media">
+        <img src="src/imports/1440WLight/12c1e2c7563da31303ab1c49523794c71ae6664c.png" alt="Спортивный старт">
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-pill"><span></span> Более 100 событий в этом году</p>
+        <h1>Живи в движении</h1>
+        <p class="hero-text">Выбирайте старты по бегу, лыжам и велоспорту, регистрируйтесь за пару кликов и управляйте слотами в личном кабинете.</p>
+        <div class="hero-actions">
+          <button class="primary-btn" type="button" data-scroll="#events">Найти событие</button>
+          <button class="glass-btn" type="button" data-open-modal="video">Смотреть обзор</button>
+        </div>
+        <div class="hero-stats">
+          <div><strong>50K+</strong><span>участников</span></div>
+          <div><strong>100+</strong><span>событий</span></div>
+          <div><strong>25+</strong><span>городов</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="events">
+      <div class="section-head">
+        <p class="label">Ближайшие события</p>
+        <h2>Выберите свой старт</h2>
+        <p>Календарь событий с фильтрами, таймером до старта и быстрым переходом к регистрации.</p>
+      </div>
+
+      <form class="filters" id="eventFilters">
+        <label>Вид спорта
+          <select id="sportFilter">
+            <option value="all">Все</option>
+            <option value="run">Бег</option>
+            <option value="bike">Велоспорт</option>
+            <option value="ski">Лыжи</option>
+          </select>
+        </label>
+        <label>Регион
+          <select id="regionFilter">
+            <option value="all">Все регионы</option>
+          </select>
+        </label>
+        <label>Статус
+          <select id="statusFilter">
+            <option value="upcoming">Предстоящие</option>
+            <option value="past">Прошедшие</option>
+            <option value="all">Все</option>
+          </select>
+        </label>
+      </form>
+
+      <div class="event-grid" id="eventGrid"></div>
+    </section>
+
+    <section class="section sports-section" id="sports">
+      <div class="section-head">
+        <p class="label pink">Виды спорта</p>
+        <h2>Найдите свое направление</h2>
+        <p>Категории помогают быстро отфильтровать календарь и перейти к подходящим стартам.</p>
+      </div>
+      <div class="sports-grid">
+        <button class="sport-card" type="button" data-sport="run"><span>RUN</span><strong>Бег</strong><small>24 события</small></button>
+        <button class="sport-card" type="button" data-sport="bike"><span>BIKE</span><strong>Велоспорт</strong><small>18 событий</small></button>
+        <button class="sport-card" type="button" data-sport="ski"><span>SKI</span><strong>Лыжи</strong><small>12 событий</small></button>
+        <button class="sport-card" type="button" data-sport="all"><span>ALL</span><strong>Все старты</strong><small>100+ событий</small></button>
+      </div>
+    </section>
+
+    <section class="section account-preview" id="account">
+      <div class="account-copy">
+        <p class="label">Личный кабинет</p>
+        <h2>Регистрация, документы и семья в одном месте</h2>
+        <p>Прототип поддерживает автозаполнение профиля, зависимые профили детей, загрузку страховки и передачу оплаченного слота.</p>
+        <button class="primary-btn" type="button" data-open-modal="account">Открыть демо кабинета</button>
+      </div>
+      <div class="preview-account-card">
+        <div class="profile-line">
+          <span>ВД</span>
+          <div><strong>Васильев Дмитрий</strong><small>Мужчина · 49 лет · fendervik@gmail.com</small></div>
+        </div>
+        <div class="account-list">
+          <div><strong>3</strong><span>будущих старта</span></div>
+          <div><strong>18</strong><span>баллов участия</span></div>
+          <div><strong>2</strong><span>детских профиля</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="news">
+      <div class="section-head">
+        <p class="label blue">Новости и статьи</p>
+        <h2>Будьте в курсе спортивных событий</h2>
+      </div>
+      <div class="news-grid">
+        <article class="news-card">
+          <img src="src/imports/1440WLight/6dd98ca0acaa339e158726df226104416d0648b6.png" alt="Участники на финише">
+          <div><time>25 апреля 2026</time><h3>Рекордное участие в весеннем марафоне</h3><p>Более 6000 спортсменов вышли на старт крупнейшего городского события сезона.</p></div>
+        </article>
+        <article class="news-card">
+          <img src="src/imports/1440WLight/70709b4fe4f01449ab339feb2339804b4a1bdff2.png" alt="Спортивная площадка">
+          <div><time>20 апреля 2026</time><h3>Новый формат семейных стартов</h3><p>Родители смогут регистрировать детей из своего аккаунта и прикреплять документы автоматически.</p></div>
+        </article>
+        <article class="news-card">
+          <img src="src/imports/1440WLight/453815ae6aaca94cfa7ba9935a5657c4abddffea.png" alt="Спортсмены">
+          <div><time>18 апреля 2026</time><h3>Интервью с победителем серии</h3><p>Чемпион делится подготовкой, восстановлением и планом стартов на летний сезон.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Готовы к новым достижениям?</h2>
+      <p>Выберите старт, заполните заявку из профиля и оплатите слот без лишних шагов.</p>
+      <button class="light-btn" type="button" data-scroll="#events">Начать сейчас</button>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <img class="logo-img footer-logo" src="src/logo_1.png" alt="Arta Sport">
+      <p>Платформа спортивных событий для активного образа жизни.</p>
+    </div>
+    <div>
+      <strong>События</strong>
+      <a href="#events">Марафоны</a>
+      <a href="#events">Велогонки</a>
+      <a href="#events">Лыжные старты</a>
+    </div>
+    <div>
+      <strong>Поддержка</strong>
+      <a href="#account">Личный кабинет</a>
+      <a href="#account">Документы</a>
+      <a href="#account">Передача слота</a>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card">
+      <button class="modal-close" type="button" data-close-modal aria-label="Закрыть">×</button>
+      <h2 id="modalTitle"></h2>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    window.jQuery || document.write('<script src="prototype-jquery-fallback.js"><\/script>');
+  </script>
+  <script src="prototype.js"></script>
+</body>
+</html>
