@@ -54,48 +54,39 @@
         <article class="profile-summary">
           <div class="avatar">ВД</div>
           <div class="profile-text">
-            <h2>Васильев Дмитрий</h2>
+            <h2>Васильев Дмитрий Сергеевич</h2>
             <p>Мужчина · 49 лет · fendervik@gmail.com</p>
           </div>
           <button class="ghost-btn" type="button" data-view-target="edit">Редактировать</button>
         </article>
 
         <section class="metrics-grid">
-          <article><strong>3</strong><span>будущих старта</span></article>
-          <article><strong>18</strong><span>баллов участия</span></article>
+          <article class="metric-link" data-my-registrations role="button" tabindex="0"><strong id="futureStartsCount">0</strong><span>будущих старта</span></article>
           <article><strong>2</strong><span>детских профиля</span></article>
+          <article class="metric-action metric-link" data-potential-registrations role="button" tabindex="0">
+            <strong>Ваши потенциальные старты</strong>
+            <span>Подберите новое мероприятие</span>
+            <button class="primary-btn" type="button" data-open-drawer="registration">Новая регистрация</button>
+          </article>
         </section>
 
         <section class="insurance-block">
           <div class="block-title">
             <div>
               <p class="eyebrow">Партнерские сервисы</p>
-              <h2>Страхование</h2>
+              <h2 class="partner-heading"><img src="src/imports/1440WLight/GP-logo.svg" alt="GoProtect"></h2>
             </div>
-            <span class="partner-logo">✺ ЛУЧИ</span>
           </div>
           <div class="insurance-grid">
-            <button class="choice-card" type="button" data-insurance="От несчастных случаев">От несчастных случаев</button>
-            <button class="choice-card" type="button" data-insurance="Велостраховка">Велостраховка</button>
-            <button class="choice-card" type="button" data-insurance="Страхование лыж">Страхование лыж</button>
+            <button class="choice-card" type="button" data-insurance="GoProtect">Оформить страховку GoProtect</button>
           </div>
-        </section>
-
-        <section class="deduction-banner">
-          <div>
-            <p class="eyebrow">Возврат средств</p>
-            <h3>Налоговый вычет за спорт</h3>
-            <p>Верните часть стоимости слота на событиях определенных организаторов.</p>
-            <button class="primary-btn" type="button">Оформить вычет</button>
-          </div>
-          <div class="banner-visual" aria-hidden="true">%</div>
         </section>
 
         <section class="dashboard-grid">
           <article class="mini-panel">
             <div class="panel-head">
               <h3>Мои будущие старты</h3>
-              <button class="text-btn" type="button" data-view-target="registrations">Все</button>
+              <button class="text-btn" type="button" data-my-registrations>Все</button>
             </div>
             <div id="futureStarts"></div>
           </article>
@@ -116,7 +107,7 @@
         <div class="document-grid">
           <article class="document-card">
             <span class="doc-icon">PDF</span>
-            <div><h3>Спортивная страховка</h3><p id="insuranceFile">insurance_vasilev_2026.pdf · действует до 20.12.2026</p></div>
+            <div><h3>Страховка GoProtect</h3><p id="insuranceFile">goprotect_vasilev_2026.pdf · действует до 20.12.2026</p></div>
             <label class="upload-btn">Загрузить<input type="file" id="insuranceUpload" accept=".pdf,.jpg,.jpeg,.png"></label>
           </article>
           <article class="document-card">
@@ -146,8 +137,7 @@
       </section>
 
       <section class="view" data-view-panel="ratings">
-        <div class="section-head"><div><p class="eyebrow">Результаты и баллы</p><h1>Оценки</h1></div></div>
-        <div class="rating-card"><strong>18</strong><span>баллов лидера по числу участий</span><p>Начисляется 1 балл за каждый оплаченный старт.</p></div>
+        <div class="section-head"><div><p class="eyebrow">Результаты</p><h1>Оценки</h1></div></div>
         <div class="result-list" id="resultList"></div>
       </section>
 
@@ -174,9 +164,17 @@
       <section class="view" data-view-panel="edit">
         <h1>Изменить профиль</h1>
         <form class="profile-form" id="profileForm">
-          <label>Имя<input type="text" value="Дмитрий"></label>
-          <label>Фамилия<input type="text" value="Васильев"></label>
-          <label>Email<input type="email" value="fendervik@gmail.com"></label>
+          <label>Фамилия *<input type="text" value="Васильев" required></label>
+          <label>Имя *<input type="text" value="Дмитрий" required></label>
+          <label>Отчество *<input type="text" value="Сергеевич" required></label>
+          <label>Пол *<select required><option value="male" selected>Мужчина</option><option value="female">Женщина</option></select></label>
+          <label>Дата рождения *<input type="date" value="1977-04-12" required></label>
+          <label>Телефон *<input type="tel" value="+7 900 123-45-67" required></label>
+          <label>Email *<input type="email" value="fendervik@gmail.com" required></label>
+          <label>Страна<input type="text" value="Россия"></label>
+          <label>Город / населенный пункт<input type="text" value="Москва"></label>
+          <label>Организация / клуб<input type="text" placeholder="Название организации или клуба"></label>
+          <label>Экстренный контакт<input type="text" placeholder="Имя и телефон"></label>
           <button class="primary-btn" type="submit">Сохранить</button>
         </form>
       </section>

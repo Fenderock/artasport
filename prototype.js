@@ -324,7 +324,7 @@
     $('#modalTitle').text('Демо личного кабинета');
     $('#modalBody').html(`
       <div class="modal-list">
-        <div><strong>Профиль:</strong> Васильев Дмитрий, 49 лет</div>
+        <div><strong>Профиль:</strong> Васильев Дмитрий Сергеевич, 49 лет</div>
         <div><strong>Документы:</strong> страховка прикрепляется к заявкам автоматически</div>
         <div><strong>Семья:</strong> 2 зависимых профиля для регистрации детей</div>
         <div><strong>Слот:</strong> оплаченный старт можно передать по email</div>
@@ -402,6 +402,7 @@ $(function () {
   ];
 
   const sportLabel = { run: 'RUN', ski: 'SKI', bike: 'BIKE' };
+  let calendarScope = 'all';
 
   function rub(value) {
     return `${Math.max(0, value).toLocaleString('ru-RU')} ₽`;
@@ -441,7 +442,9 @@ $(function () {
     const region = $('#regionFilter').val();
     const status = $('#statusFilter').val();
     return events.filter((item) => {
-      return (sport === 'all' || item.sport === sport)
+      return (calendarScope !== 'mine' || item.paid)
+        && (calendarScope !== 'potential' || !item.paid)
+        && (sport === 'all' || item.sport === sport)
         && (region === 'all' || item.region === region)
         && (status === 'all' || item.status === status);
     });
@@ -495,12 +498,22 @@ $(function () {
       </section>
     `).join('');
 
-    $('#calendarList').html(html || '<div class="empty-state">По выбранным фильтрам событий нет.</div>');
+    const emptyText = calendarScope === 'mine'
+      ? 'У профиля нет зарегистрированных мероприятий по выбранным фильтрам.'
+      : calendarScope === 'potential'
+        ? 'Нет будущих мероприятий, доступных для новой регистрации.'
+      : 'По выбранным фильтрам событий нет.';
+    $('#calendarList').html(html || `<div class="empty-state">${emptyText}</div>`);
   }
 
   function renderProfileBlocks() {
-    const future = events.filter((item) => item.paid && item.status === 'upcoming');
+    const registeredFuture = events.filter((item) => item.paid && item.status === 'upcoming');
+    const future = registeredFuture
+      .sort((a, b) => new Date(a.date) - new Date(b.date))
+      .slice(0, 1);
     const past = events.filter((item) => item.paid && item.status === 'past');
+
+    $('#futureStartsCount').text(registeredFuture.length);
 
     $('#futureStarts').html(future.map((item) => `
       <div class="start-item">
@@ -513,7 +526,7 @@ $(function () {
     $('#pastStarts').html(past.map((item) => `
       <div class="start-item">
         <strong>${item.title}</strong>
-        <p>${eventDate(item.date)} · результат ${item.result}</p>
+        <p>${eventDate(item.date)} · ${item.region}, ${item.place}</p>
         <a href="#">Смотреть протокол</a>
       </div>
     `).join(''));
@@ -648,10 +661,47 @@ $(function () {
   });
 
   $('.side-link[data-view], [data-view-target]').on('click', function () {
-    setView($(this).data('view') || $(this).data('view-target'));
+    const view = $(this).data('view') || $(this).data('view-target');
+    if (view === 'registrations') {
+      calendarScope = 'all';
+      renderCalendar();
+    }
+    setView(view);
   });
 
   $('#eventFilters select').on('change', renderCalendar);
+
+  $('[data-my-registrations]').on('click', function () {
+    calendarScope = 'mine';
+    $('#sportFilter').val('all');
+    $('#regionFilter').val('all');
+    $('#statusFilter').val('upcoming');
+    renderCalendar();
+    setView('registrations');
+  });
+
+  $('[data-my-registrations]').on('keydown', function (event) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      $(this).trigger('click');
+    }
+  });
+
+  $('[data-potential-registrations]').on('click', function () {
+    calendarScope = 'potential';
+    $('#sportFilter').val('all');
+    $('#regionFilter').val('all');
+    $('#statusFilter').val('upcoming');
+    renderCalendar();
+    setView('registrations');
+  });
+
+  $('[data-potential-registrations]').on('keydown', function (event) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      $(this).trigger('click');
+    }
+  });
 
   $('[data-open-drawer="dependent"]').on('click', function () {
     openDrawer('Добавить ребенка', `
@@ -663,7 +713,8 @@ $(function () {
     `);
   });
 
-  $('[data-open-drawer="registration"]').on('click', function () {
+  $('[data-open-drawer="registration"]').on('click', function (event) {
+    event.stopPropagation();
     registrationDrawer();
   });
 
